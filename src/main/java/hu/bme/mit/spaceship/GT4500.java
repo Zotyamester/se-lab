@@ -29,8 +29,10 @@ public class GT4500 implements SpaceShip {
   * 			- To give some cooling time to the torpedo stores, torpedo stores are fired alternating.
   * 			- But if the store next in line is empty, the ship tries to fire the other store.
   * 			- If the fired store reports a failure, the ship does not try to fire the other one.
-  * 	ALL:	tries to fire both of the torpedo stores.
-  *
+  * 	ALL:	tries to fire both of the torpedo stores. The order of firing is "primary, then
+  *         secondary". Having that said, the two firing events are independent of each other,
+  *         so even if the first attempt to fire from the primary store failed, it will still
+  *         try to shoot a torpedo from the secondary store.
   * @return whether at least one torpedo was fired successfully
   */
   @Override
